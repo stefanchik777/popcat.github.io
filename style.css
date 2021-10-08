@@ -1,6 +1,6 @@
 body, html {
   margin: 0px;
-  height: 100%;
+  height: 50%;
   cursor: default;
   font-family: sans-serif;
   -webkit-touch-callout: none;
@@ -19,7 +19,7 @@ h1 {
 }
 
 #game {
-  height: 60%;
+  height: 30%;
   display: grid;
   -webkit-app-region: no-drag;
 }
