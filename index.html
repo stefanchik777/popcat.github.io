@@ -1,94 +1,32 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta property="og:title" content="Змеинный кликер"/>
-    <meta property="og:description" content="Бесполезный кликер от Ромоза!"/>
-    <meta property="og:image" content="https://i.imgur.com/G1zvURQ.png"/>
-    <meta property="og:url" content="https://boop.romoz.ml/"/>
-    <meta property="og:site_name" content="Змеинный кликер"/>
-    <meta name="theme-color" content="#00FF11">
-    <title>Змея</title>
-    <link rel=stylesheet href=style.css />
-<style>
-body, html {
-a.knopka {
-  color: #fff; /* цвет текста */
-  text-decoration: none; /* убирать подчёркивание у ссылок */
-  user-select: none; /* убирать выделение текста */
-  background: rgb(255,255,255); /* фон кнопки */
-  padding: .7em 1.5em; /* отступ от текста */
-  outline: none; /* убирать контур в Mozilla */
-} 
-a.knopka:hover { background: rgb(255,255,255); } /* при наведении курсора мышки */
-button.knopka:active { background: rgb(255,255,255); } /* при нажатии */
-  margin: 0px;
-  height: 100%;
-  cursor: default;
-  font-family: sans-serif;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-app-region: drag;
-}
-
-h1 {
-  text-align: center;
-  margin: auto;
-  padding-top: 1em;
-}
-
-#game {
-  height: 60%;
-  display: grid;
-  -webkit-app-region: no-drag;
-}
-
-#snek {
-  cursor: pointer;
-  font-size: 500%;
-  margin: auto;
-}
-
-#boops {
-  text-align: center;
-  -webkit-app-region: no-drag;
-}
-</style>
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Назва вашого додатку">
+    <link rel="apple-touch-icon" href="іконка.png">
+    <title>Ваш веб-застосунок</title>
+</head>
+<body>
+    <!-- Тут ваш вміст веб-застосунку -->
     
-    <h1>POP CAT</h1>
-
-    <div id=game><div id=snek class="knopka"><button id="boobs" style="width: 200px; height: 200px;"><img src="https://github.com/stefanchik777/popcat.github.io/blob/main/CrgorVg7ffIFCo8prgc4YdzBDVCIJ4KPpwY4VC57p4Z3_dvBhVKnCCZwuMLFx-hX7Ydu=s300.png?raw=true" alt="альтернативный текст"></div></div></button>
-        <center><h3><section id="money"></h3></center>
-</section>
+    <button onclick="додатиНаГоловнийЕкран()">Додати на головний екран</button>
 
     <script>
-    const
-display = document.querySelector("#money"),
-button = document.querySelector("#boobs");
-let startmoney = 0;
-
-const reducer =boobs=>display.innerHTML = `${boobs} BOOPS`;
-reducer(startmoney);
-button.addEventListener("click", () => {
-startmoney += 1;
-reducer(startmoney);
-} );
+        function додатиНаГоловнийЕкран() {
+            alert("Натисніть кнопку 'Поділитися' у Safari, а потім оберіть опцію 'Додати на головний екран'.");
+            // Реєстрація Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker зареєстрований з успіхом:', registration);
+                    })
+                    .catch(function(error) {
+                        console.error('Помилка реєстрації Service Worker:', error);
+                    });
+            }
+        }
     </script>
-  </body>
-<!-- The overlay -->
-<div id="myNav" class="overlay">
-
-  <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-
-
-</div>
-
-
+</body>
 </html>
