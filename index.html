@@ -3,30 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Назва вашого додатку">
-    <link rel="apple-touch-icon" href="іконка.png">
-    <title>Ваш веб-застосунок</title>
+    <title>Crypto Currency Viewer</title>
 </head>
 <body>
-    <!-- Тут ваш вміст веб-застосунку -->
-    
-    <button onclick="додатиНаГоловнийЕкран()">Додати на головний екран</button>
+    <h1>Crypto Currency Viewer</h1>
+    <div>
+        <label id="labelBTC">BTC: Loading...</label><br>
+        <label id="labelETH">ETH: Loading...</label><br>
+        <label id="labelProfit">Прибуток: Loading...</label><br>
+    </div>
 
     <script>
-        function додатиНаГоловнийЕкран() {
-            alert("Натисніть кнопку 'Поділитися' у Safari, а потім оберіть опцію 'Додати на головний екран'.");
-            // Реєстрація Service Worker
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(function(registration) {
-                        console.log('Service Worker зареєстрований з успіхом:', registration);
-                    })
-                    .catch(function(error) {
-                        console.error('Помилка реєстрації Service Worker:', error);
-                    });
+        // Функція для оновлення цін та розрахунку прибутку
+        async function updateCurrencyPrices() {
+            const BinanceApiUrl = "https://api.binance.com/api/v3/ticker/price?symbol=";
+            let btcPrice, ethPrice;
+            try {
+                // Отримання цін з Binance API
+                let btcResponse = await fetch(BinanceApiUrl + "BTCUSDT");
+                let ethResponse = await fetch(BinanceApiUrl + "ETHUSDT");
+
+                let btcData = await btcResponse.json();
+                let ethData = await ethResponse.json();
+
+                btcPrice = btcData.price;
+                ethPrice = ethData.price;
+
+                // Відображення цін на сторінці
+                document.getElementById("labelBTC").innerText = `BTC: ${btcPrice}$`;
+                document.getElementById("labelETH").innerText = `ETH: ${ethPrice}$`;
+
+                // Обчислення прибутку (тут вам потрібно буде додати власну логіку для позицій та введених цін)
+                let btcPosition = 1; // Припустимо, що це ваша позиція в BTC фьючерсах
+                let ethPosition = 1; // Припустимо, що це ваша позиція в ETH фьючерсах
+                let btcEntryPrice = 50000; // Припустимо, що це ваша введена ціна для BTC фьючерса
+                let ethEntryPrice = 2000; // Припустимо, що це ваша введена ціна для ETH фьючерса
+
+                let btcProfit = (btcPrice - btcEntryPrice) * btcPosition;
+                let ethProfit = (ethPrice - ethEntryPrice) * ethPosition;
+                let totalProfit = btcProfit + ethProfit;
+
+                document.getElementById("labelProfit").innerText = `Прибуток: ${totalProfit}$`;
+
+            } catch (error) {
+                console.error("Помилка: ", error);
             }
+
+            // Оновлення курсів кожну секунду
+            setTimeout(updateCurrencyPrices, 1000);
         }
+
+        // Запуск оновлення цін
+        updateCurrencyPrices();
     </script>
 </body>
 </html>
