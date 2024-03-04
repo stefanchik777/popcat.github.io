@@ -3,14 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Назва вашого додатку">
+    <link rel="apple-touch-icon" href="іконка.png">
     <title>Crypto Currency Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 20px;
+            color: floralwhite;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .label {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: floralwhite
+        }
+
+        .image-container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
     <h1>Crypto Currency Viewer</h1>
-    <div>
-        <label id="labelBTC">BTC: Loading...</label><br>
-        <label id="labelETH">ETH: Loading...</label><br>
-        <label id="labelProfit">Прибуток: Loading...</label><br>
+    <div class="container">
+        <div class="label" id="labelBTC">BTC: Loading...</div>
+        <div class="label" id="labelETH">ETH: Loading...</div>
+        <div class="label" id="labelProfit">Прибуток: Loading...</div>
+    </div>
+    <div class="image-container">
+        <img src="1.gif" alt="Image" width="350">
     </div>
 
     <script>
